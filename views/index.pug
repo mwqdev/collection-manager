@@ -1,0 +1,159 @@
+extends layout
+
+block content
+    // Navigation Section
+    nav.grey.darken4.z-depth-2(role='navigation')
+        div.nav-wrapper.container
+            a.brand-logo.center#logo-container
+                span.logo-portfolio.grey-text.text-lighten-2 The Arsenal
+            //ul.hide-on-med-and-down
+            //    li
+            //        a.white-text(href='/') Home
+            //    li
+            //        a.white-text(href='/edit') Edit
+            //ul.side-nav#nav-mobile(style='transform: translateX(-100%);')
+            //    li
+            //        a.white-text(href='/') Home
+            //    li
+            //        a.white-text(href='/edit') edit
+            //a.button-collapse(href='#', data-activates='nav-mobile')
+            //    i.material-icons menu
+    // User section
+    div.container
+        div.row
+            h2.section-header.center Full collection
+        //// Mobile
+        //div.row.hide-on-med-and-up
+        //        div.col.s12
+        //            div.card.blue-grey.lighten-3
+        //                div.card-content.black-text
+        //                    img(src= photo)
+        //                    ul
+        //                        li= countryOfOrigin
+        //                        li= configuration
+        //                        li= rateOfFire
+        //                        li= accuracy
+        //                        li= price
+        //// Medium
+        //div.row.hide-on-large-only
+        //        div.col.m6
+        //            div.card.blue-grey.lighten-3
+        //                div.card-content.black-text
+        //                    img(src= photo)
+        //                    ul
+        //                        li= countryOfOrigin
+        //                        li= configuration
+        //                        li= rateOfFire
+        //                        li= accuracy
+        //                        li= price
+        // Desktop
+        div.row.hide-on-med-and-down
+            div.col.l12.trying-flexbox
+                each val in data
+                    div.card.blue-grey.lighten-1.hoverable.col.l4
+                        div.card-content.white-text
+                            span.card-title= val.name
+                            img(src= val.photo)
+                            div.row
+                                div.col.l6
+                                    ul.left-align
+                                        li Origin:
+                                        li Firerate:
+                                        li Ammo:
+                                        li Capacity:
+                                        li Price:
+                                div.col.l6
+                                    ul.right-align
+                                        li= val.country
+                                        li= val.firerate
+                                        li= val.ammo
+                                        li= val.capacity
+                                        li= val.price
+                        div.card-action
+                            a(href='#delete-modal').materialize-red-text.text-lighten-4.btn-flat.modal-trigger Delete
+                            a(href='#edit-modal').grey-text.text-lighten-4.btn-flat.modal-trigger Edit
+                        div.modal#edit-modal
+                            div.modal-content
+                                div.row
+                                    div.col.l8.offset-l2.m12.s12
+                                        div.row
+                                            form.col.s12(method='post')
+                                                div.row
+                                                    div.input-field.col.s6
+                                                        input.validate#name(placeholder='Name' type='text' name='name')
+                                                        label(for='name') Name
+                                                    div.input-field.col.s6
+                                                        input.validate#country(placeholder='Country' type='text' name='country')
+                                                        label(for='country') Country
+                                                div.row
+                                                    div.input-field.col.s6
+                                                        input.validate#firerate(placeholder='Firerate' type='text' name='firerate')
+                                                        label(for='firerate') Firerate
+                                                    div.input-field.col.s6
+                                                        input.validate#ammo(placeholder='Ammunition' type='text' name='ammo')
+                                                        label(for='ammo') Ammunition
+                                                div.row
+                                                    div.input-field.col.s6
+                                                        input.validate#capacity(placeholder='Capacity' type='text' name='capacity')
+                                                        label(for='capacity') Capacity
+                                                    div.input-field.col.s6
+                                                        input.validate#price(placeholder='Price' type='text' name='price')
+                                                        label(for='price') Price
+                                                div.row
+                                                    div.col.l12
+                                                        div.file-field.input-field
+                                                            div.btn
+                                                                i.material-icons camera
+                                                                input(type='file')
+                                                            div.file-path-wrapper
+                                                                input.filepath.validate(type='text' placeholder='Picture optional')
+                                                div.row
+                                                    button.right.btn.waves-effect.waves-light(type='submit' name='action') Submit
+                                                        i.material-icons.right send
+
+    // Add a gun form
+    div.container
+        div.row
+            div.col.l8.offset-l2
+                ul.collapsible.popout.custom-popout(data-collapsible='accordion')
+                    li
+                        div.collapsible-header
+                            span Click here to add a new weapon to the database.
+                                i.left.large.material-icons keyboard_arrow_down
+                        div.collapsible-body
+                            div.row
+                                div.col.l8.offset-l2.m12.s12
+                                    div.row
+                                        form.col.s12(method='post')
+                                            div.row
+                                                div.input-field.col.s6
+                                                    input.validate#name(placeholder='Name' type='text' name='name')
+                                                    label(for='name') Name
+                                                div.input-field.col.s6
+                                                    input.validate#country(placeholder='Country' type='text' name='country')
+                                                    label(for='country') Country
+                                            div.row
+                                                div.input-field.col.s6
+                                                    input.validate#firerate(placeholder='Firerate' type='text' name='firerate')
+                                                    label(for='firerate') Firerate
+                                                div.input-field.col.s6
+                                                    input.validate#ammo(placeholder='Ammunition' type='text' name='ammo')
+                                                    label(for='ammo') Ammunition
+                                            div.row
+                                                div.input-field.col.s6
+                                                    input.validate#capacity(placeholder='Capacity' type='text' name='capacity')
+                                                    label(for='capacity') Capacity
+                                                div.input-field.col.s6
+                                                    input.validate#price(placeholder='Price' type='text' name='price')
+                                                    label(for='price') Price
+                                            div.row
+                                                div.col.l12
+                                                    div.file-field.input-field
+                                                        div.btn
+                                                            i.material-icons camera
+                                                            input(type='file')
+                                                        div.file-path-wrapper
+                                                            input.filepath.validate(type='text' placeholder='Picture optional')
+                                            div.row
+                                                    button.right.btn.waves-effect.waves-light(type='submit' name='action') Submit
+                                                        i.material-icons.right send
